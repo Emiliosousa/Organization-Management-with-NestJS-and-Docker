@@ -1,10 +1,77 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/n4Xu0y1X)
-[![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-2e0aaae1b6195c2367325f4f02e2d04e9abb55f0b24a779b69b11b9e10269abc.svg)](https://classroom.github.com/online_ide?assignment_repo_id=16800870&assignment_repo_type=AssignmentRepo)
-# sio_2425_project
+Organization Management Platform with NestJS and Docker
+Overview
+A backend platform built with NestJS and designed to run seamlessly in Docker containers.
+It provides a secure environment for:
 
-# Group members
-- Adrian Murillo Moreno (123480) adrianmurillo@ua.pt
-- Emilio sousa gutierrez (123599) emiliosousa@ua.pt
-- Carlos Martinez Fariza (123549)
-- Alisa Gudovskaja (123501)
+Managing organizations
 
+Handling public/private key pairs
+
+Storing and retrieving associated documents
+
+Managing roles and permissions
+
+The project includes RESTful API endpoints, example datasets, and environment configurations for rapid deployment.
+
+
+Requirements
+Docker
+
+Docker Compose
+
+bash shell (for running test scripts)
+
+Installation & Running
+1. Clone the repository
+bash
+Copiar
+Editar
+git clone https://github.com/your-username/your-repo.git
+cd your-repo
+2. Build and run with Docker
+bash
+Copiar
+Editar
+docker-compose up --build
+This will start all necessary services for the API.
+
+How to Test the API
+Once the application is running, you can use the provided shell scripts to execute API requests quickly.
+
+From Delivery 1 (basic repository operations)
+bash
+Copiar
+Editar
+cd delivery1
+chmod +x repository_commands
+./repository_commands
+From Delivery 2 (extended operations and permissions)
+bash
+Copiar
+Editar
+cd delivery2
+chmod +x test_commands.sh
+./test_commands.sh
+These scripts execute a predefined sequence of API calls, including:
+
+Creating organizations
+
+Adding documents
+
+Managing roles and permissions
+
+Retrieving files
+
+You can also open the scripts and run each command individually to better understand how the API works.
+
+Project Structure
+bash
+Copiar
+Editar
+delivery1/   # Initial repository setup & basic operations
+delivery2/   # Extended functionality and permission management
+scripts/     # Individual shell scripts for specific API actions
+Dockerfile   # Docker container setup
+docker-compose.yml  # Service orchestration
+License
+MIT License – Free to use, modify, and distribute.
