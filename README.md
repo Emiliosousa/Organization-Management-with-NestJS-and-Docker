@@ -72,8 +72,6 @@ scripts/     # Individual shell scripts for specific API actions
 Dockerfile   # Docker container setup
 docker-compose.yml  # Service orchestration
 ```
-
----
-
 ## License
-[MIT License](LICENSE) – Free to use, modify, and distribute.
+All Rights Reserved – This project is made available on GitHub for portfolio and educational purposes only.  
+No permission is granted to use, copy, modify, or distribute this software without explicit written consent from the author.
