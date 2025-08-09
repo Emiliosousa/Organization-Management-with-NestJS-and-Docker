@@ -1,0 +1,27 @@
+#!/usr/bin/env python3
+import argparse
+import os
+import sys
+from venv import logger
+from .repository_commands import rep_list_subjects
+import logging
+
+parser = argparse.ArgumentParser(description="Listar credenciales del sujeto")
+
+# rep_list_subject <session_file>  
+parser.add_argument('session', required=True, help="Archivo de sesión a procesar")
+parser.add_argument("-v", "--verbose", help="Aumentar la verbosidad", action="store_true")
+
+args = parser.parse_args()
+
+if args.verbose:
+    logger.setLevel(logging.DEBUG)
+    logger.debug("Modo verbose activado. Log level establecido en DEBUG.")
+
+# Validar si el archivo de sesión es válido
+if not os.path.exists(args.session):
+    logger.error(f"El archivo especificado no existe: {args.session}")
+    sys.exit(-1)
+
+# Llamar a la función para listar sujetos
+rep_list_subjects(args.session)

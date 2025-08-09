@@ -1,0 +1,33 @@
+#!/usr/bin/env python3
+import argparse
+import os
+import sys
+from venv import logger
+from .repository_commands import rep_decrypt_file
+import logging
+
+parser = argparse.ArgumentParser(description="Generar credenciales de sujeto")
+
+parser.add_argument("-f", "--file", nargs=1, required=True, help="Ruta al archivo encriptado")
+parser.add_argument("-m", "--metadata", nargs=1, required=True, help="Ruta al archivo de metadatos de cifrado")
+parser.add_argument("-v", "--verbose", help="Aumentar la verbosidad", action="store_true")
+parser.add_argument('arg0', nargs='?', default=None)
+parser.add_argument('arg1', nargs='?', default=None)
+parser.add_argument('arg2', nargs='?', default=None)
+
+args = parser.parse_args()
+
+if args.verbose:
+    logger.setLevel(logging.DEBUG)
+    logger.debug('Modo verbose activado. Log level establecido en DEBUG.')
+
+# Validar si el archivo existe y es accesible
+if not os.path.exists(args.file[0]):
+    logger.error(f"El archivo especificado no existe: {args.file[0]}")
+    sys.exit(-1)
+
+if not os.path.exists(args.metadata[0]):
+    logger.error(f"El archivo de metadatos especificado no existe: {args.metadata[0]}")
+    sys.exit(-1)
+
+rep_decrypt_file(args.arg1, args.arg2)

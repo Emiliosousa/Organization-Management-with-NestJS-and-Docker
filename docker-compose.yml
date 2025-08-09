@@ -1,0 +1,44 @@
+services:
+  mariadb:
+    image: mariadb:latest
+    container_name: mariadb_for_sam
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: sam
+      MYSQL_USER: secure_access_manager
+      MYSQL_PASSWORD: secure_access_manager_password
+    volumes:
+      - mariadb_data:/var/lib/mysql
+    restart: unless-stopped
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin_for_sam
+    ports:
+      - "8083:80"
+    environment:
+      PMA_HOST: mariadb
+      PMA_PORT: 3306
+      PMA_USER: secure_access_manager
+      PMA_PASSWORD: secure_access_manager_password
+    depends_on:
+      - mariadb
+    restart: unless-stopped
+
+  api:
+    build: ./
+    container_name: nestjs_api_for_sam
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mariadb
+    restart: unless-stopped
+    environment:
+      DATABASE_HOST: mariadb
+      DATABASE_USER: secure_access_manager
+      DATABASE_PASSWORD: secure_access_manager_password
+      DATABASE_NAME: sam
+
+volumes:
+  mariadb_data:
+    driver: local

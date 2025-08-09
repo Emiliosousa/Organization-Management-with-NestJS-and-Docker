@@ -1,0 +1,16 @@
+{
+    "organization": "MyOrg",
+    "username": "john_doe",
+    "password": "mypassword",
+    "credentials_file": "public_key.pem",
+    "subjects": [
+        {
+            "username": "jane_doe",
+            "name": "Jane Doe",
+            "email": "jane@example.com",
+            "credentials_file": "public_key.pem",
+            "status": "active"
+        }
+    ]
+}
+}

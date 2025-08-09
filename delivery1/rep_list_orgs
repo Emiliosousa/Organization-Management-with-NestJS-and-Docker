@@ -1,0 +1,19 @@
+#!/usr/bin/env python3
+import argparse
+from venv import logger
+from .repository_commands import rep_list_orgs
+import logging
+
+parser = argparse.ArgumentParser(description="Generar credenciales de sujeto")
+
+parser.add_argument("-v", '--verbose', help="Aumentar la verbosidad", action="store_true")
+
+args = parser.parse_args()
+
+# Configuración del log según el nivel de verbosidad
+if args.verbose:
+    logger.setLevel(logging.DEBUG)
+    logger.debug('Modo verbose activado. Log level establecido en DEBUG.')
+
+# Llamar a la función para listar las organizaciones
+rep_list_orgs()

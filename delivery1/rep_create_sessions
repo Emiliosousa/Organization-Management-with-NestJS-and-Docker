@@ -1,0 +1,29 @@
+#!/usr/bin/env python3
+import argparse
+import os
+import sys
+from venv import logger
+from .repository_commands import rep_create_session
+import logging
+
+
+# rep_create_sessions <organization> <username> <password> <credentials_file> <session_file>
+parser = argparse.ArgumentParser(description="Generar credenciales de sujeto")
+
+
+parser.add_argument("-v", '--verbose', help="Aumentar la verbosidad", action="store_true")
+parser.add_argument('arg0', nargs='?', default=None)
+parser.add_argument('arg1', nargs='?', default=None)
+parser.add_argument('arg2', nargs='?', default=None)
+parser.add_argument('arg3', nargs='?', default=None)
+parser.add_argument('arg4', nargs='?', default=None)
+parser.add_argument('arg5', nargs='?', default=None)
+
+args = parser.parse_args()
+
+if args.verbose:
+    logger.setLevel(logging.DEBUG)
+    logger.debug('Modo verbose activado. Log level establecido en DEBUG.')
+
+
+rep_create_session(args.arg1, args.arg2, args.arg3, args.arg4, args.arg5)

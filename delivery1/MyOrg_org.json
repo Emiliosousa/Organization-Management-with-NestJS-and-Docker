@@ -1,0 +1,11 @@
+{
+    "organization": "MyOrg",
+    "users": [
+        {
+            "username": "john_doe",
+            "name": "John Doe",
+            "email": "johndoe@example.com",
+            "public_key_file": "public_key.pem"
+        }
+    ]
+}

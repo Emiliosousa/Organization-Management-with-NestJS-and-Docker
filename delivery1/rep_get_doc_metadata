@@ -1,0 +1,24 @@
+#!/usr/bin/env python3
+import argparse
+from venv import logger
+from .repository_commands import rep_get_doc_metadata
+import logging
+
+parser = argparse.ArgumentParser(description="Obtener credenciales de documento")
+
+# rep_add_doc <session_file> <document_name> 
+parser.add_argument("-v", '--verbose', help="Aumentar la verbosidad", action="store_true")
+parser.add_argument('arg0', nargs='?', default=None)
+parser.add_argument('session_file', nargs='?', default=None)
+parser.add_argument('document_name', nargs='?', default=None)
+
+
+
+args = parser.parse_args()
+
+if args.verbose:
+    logger.setLevel(logging.DEBUG)
+    logger.debug('Modo verbose activado. Log level establecido en DEBUG.')
+
+
+rep_get_doc_metadata(args.session_file, args.document_name)
